@@ -7,9 +7,11 @@ import Utils.*;
 public class StaticLocationFinder implements LocationFinder {
 
 	private HashMap<Long, Position> knownLocations;
+	private Position lastPosition;
 	
 	public StaticLocationFinder() {
 		knownLocations = Utils.getKnownLocations();
+		lastPosition = new Position(0, 0);
 	}
 	
 	@Override
@@ -19,32 +21,47 @@ public class StaticLocationFinder implements LocationFinder {
 	
 	
 	public Position triangulate(MacRssiPair[] data) {
-		Position[] positions = new Position[data.length];
+		MacRssiPair[] filteredData = filterData(data);
+		Position[] positions = new Position[filteredData.length];
 		double x = 0;
 		double y = 0;
-		
-		printMacs(data);
-		
-		for (int i = 0; i < data.length; i++) {
-			if (knownLocations.containsKey(data[i].getMacAsLong())) {
-				positions[i] = knownLocations.get(data[i].getMacAsLong());
-			} else {
-				positions[i] = new Position(0, 0);
-			}
+		printMacs(filteredData);
+		for (int i = 0; i < filteredData.length; i++) {
+			positions[i] = knownLocations.get(filteredData[i].getMacAsLong());
 			x += positions[i].getX();
 			y += positions[i].getY();
 		}
 		x = x / positions.length;
 		y = y / positions.length;
 		
-		return new Position(x, y);
+		if (!(Double.isNaN(x) || Double.isNaN(y))) {
+			lastPosition = new Position(x, y);
+		}
+		return lastPosition;
 	}
 	
+	private MacRssiPair[] filterData(MacRssiPair[] data) {
+		int dataLength = data.length;
+		for (int i = 0; i < data.length; i++) {
+			if (!knownLocations.containsKey(data[i].getMacAsLong())) {
+				data[i] = null;
+				dataLength--;
+			}
+		}
+		MacRssiPair[] ret = new MacRssiPair[dataLength];
+		int counter = 0;
+		for (int i = 0; i < data.length; i++) {
+			if (data[i] != null) {
+				ret[counter] = data[i];
+				counter++;
+			}
+		}
+		return ret;
+	}
+
 	private void printMacs(MacRssiPair[] data) {
 		for (MacRssiPair pair : data) {
 			System.out.println(pair);
 		}
 	}
-
-
 }
