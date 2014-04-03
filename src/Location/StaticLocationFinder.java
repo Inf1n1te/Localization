@@ -1,9 +1,13 @@
 package Location;
 
+import java.util.HashMap;
+
 import Utils.*;
 
 public class StaticLocationFinder implements LocationFinder {
 
+	private HashMap<Long, Position> knownLocations = Utils.getKnownLocations();
+	
 	@Override
 	public Position locate(MacRssiPair[] data) {
 		return triangulate(data);
@@ -16,7 +20,7 @@ public class StaticLocationFinder implements LocationFinder {
 		double y = 0;
 		
 		for (int i = 0; i < data.length; i++) {
-			positions[i] = Utils.getKnownLocations().get(data[i].getMacAsLong());
+			positions[i] = knownLocations.get(data[i].getMacAsLong());
 			x += positions[i].getX();
 			y += positions[i].getY();
 		}

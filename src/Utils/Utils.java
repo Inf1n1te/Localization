@@ -108,7 +108,7 @@ public class Utils {
 		byte[] temp20 = { 0x64, (byte) 0xd9, (byte) 0x89, 0x43, (byte) 0xb2, (byte) 0x20 };
 		knownLocations.put(macToLong(temp20), new Position(7, 14));
 
-		// /////////// Spiegel 1 /////////////
+		// /////////// Spiegel 2 /////////////
 		// "bb-d1-e06-l" 64:d9:89:43:b2:b0	(39,14)
 		byte[] temp21 = { 0x64, (byte) 0xd9, (byte) 0x89, 0x43, (byte) 0xb2, (byte) 0xb0 };
 		knownLocations.put(macToLong(temp21), new Position(39, 14));
