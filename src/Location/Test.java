@@ -9,8 +9,12 @@ public class Test implements LocationFinder {
 
 	private HashMap<Long, Position> knownLocations;
 	private Position lastPosition;
-	private static final byte[] MAC_ADDRESS = 
+	private static final byte[] MAC_ADDRESS1 = 
 			new byte[]{ 0x64, (byte) 0xd9, (byte) 0x89, 0x43, (byte) 0xd0, (byte) 0xa0 };
+	private static final byte[] MAC_ADDRESS2 = 
+			new byte[]{ 0x64, (byte) 0xd9, (byte) 0x89, 0x43, (byte) 0xb5, (byte) 0xa0 };
+	private static final byte[] MAC_ADDRESS3 = 
+			new byte[]{ 0x64, (byte) 0xd9, (byte) 0x89, 0x43, (byte) 0xb5, (byte) 0x60 };
 	private LinkedList<Integer> rssi = new LinkedList<Integer>();
 	
 	public Test() {
@@ -26,7 +30,6 @@ public class Test implements LocationFinder {
 	
 	public Position triangulate(MacRssiPair[] data) {
 		MacRssiPair filteredData = filterData(data);
-//		printMacs(filteredData);
 		if (filteredData != null) {
 			rssi.add(filteredData.getRssi());
 			System.out.println(rssi);
@@ -36,7 +39,7 @@ public class Test implements LocationFinder {
 	
 	private MacRssiPair filterData(MacRssiPair[] data) {
 		for (int i = 0; i < data.length; i++) {
-			if (data[i].getMacAsLong() == Utils.macToLong(MAC_ADDRESS)) {
+			if (data[i].getMacAsLong() == Utils.macToLong(MAC_ADDRESS3)) {
 				return data[i];
 			}
 		}
