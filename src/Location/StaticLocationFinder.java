@@ -28,13 +28,27 @@ public class StaticLocationFinder implements LocationFinder {
 		
 		printMacs(filteredData);
 
+		double[] factors = new double[filteredData.length];
+		double sumOfFactors = 0;
+		
 		for (int i = 0; i < filteredData.length; i++) {
 			positions[i] = knownLocations.get(filteredData[i].getMacAsLong());
-			x += positions[i].getX();
-			y += positions[i].getY();
+//to delete			//x += positions[i].getX() * (Math.max(90 + data[i].getRssi(), 0));
+			//y += positions[i].getY() * (Math.max(90 + data[i].getRssi(), 0));
+			factors[i] = -1 / filteredData[i].getRssi();
+			sumOfFactors += factors[i];
 		}
-		x = x / positions.length;
-		y = y / positions.length;
+		System.out.println(sumOfFactors);
+		
+		
+		
+		for (int i = 0; i < filteredData.length; i++) {
+			x += positions[i].getX() * (factors[i] / sumOfFactors);
+			y += positions[i].getY() * (factors[i] / sumOfFactors);
+		}
+		
+//		x = x / positions.length;
+//		y = y / positions.length;
 		
 		if (!(Double.isNaN(x) || Double.isNaN(y))) {
 			lastPosition = new Position(x, y);
