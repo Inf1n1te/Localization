@@ -11,7 +11,7 @@ public class Test implements LocationFinder {
 	private Position lastPosition;
 	private static final byte[] MAC_ADDRESS = 
 			new byte[]{ 0x64, (byte) 0xd9, (byte) 0x89, 0x43, (byte) 0xd0, (byte) 0xa0 };
-	private LinkedList<Integer> rssi;
+	private LinkedList<Integer> rssi = new LinkedList<Integer>();
 	
 	public Test() {
 		knownLocations = Utils.getKnownLocations();
@@ -26,7 +26,7 @@ public class Test implements LocationFinder {
 	
 	public Position triangulate(MacRssiPair[] data) {
 		MacRssiPair filteredData = filterData(data);
-		
+//		printMacs(filteredData);
 		if (filteredData != null) {
 			rssi.add(filteredData.getRssi());
 			System.out.println(rssi);
