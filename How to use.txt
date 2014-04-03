@@ -1,0 +1,5 @@
+1) start WlanScanner.exe (deze kan blijven draaien, doet niets zonder verbonden clients)
+2) start de java code
+
+- spiegel.jpg bevat een kaartje van de spiegel met access points.
+- wlan-ap-lijst.txt bevat het mac address per access point en een schatting van de positie (x,y) op basis van de informatie uit het kaartje.

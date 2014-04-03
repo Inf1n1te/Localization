@@ -1,0 +1,39 @@
+Position (guesses based on spiegel.png map) of nodes (x,y)
+
+Spiegel 1
+"bb-d1-f09-l" 64:d9:89:43:b6:f0	(21,24)
+"bb-d1-f09-r" 64:d9:89:43:be:50	(21,14)
+"bb-d1-e04-l" 64:d9:89:43:b7:a0	(7,24)
+"bb-d1-e04-r" 64:d9:89:43:b2:20	(7,14)
+
+Spiegel 2
+"bb-d1-e06-l" 64:d9:89:43:b2:b0	(39,14)
+"bb-d1-e06-r" 64:d9:89:43:ca:f0	(39,24)
+"bb-d1-f08-l" 64:d9:89:43:bb:70	(25.5,24)
+"bb-d1-f08-r" 64:d9:89:43:c6:c0	(25.5,14)
+
+Spiegel 6
+"bb-d1-b05-l" 64:d9:89:43:d3:40	(64,16.5)	links
+"bb-d1-b05-r" 64:d9:89:43:ca:e0	(71,16.5)	rechts
+
+Spiegel 7
+"bb-d1-b04-l" 64:d9:89:43:b6:50 (79,16.5)	links
+"bb-d1-b04-r" 64:d9:89:43:d6:60 (86,16.5)	rechts
+
+Spiegel 5
+"bb-d1-f01-l" 64:d9:89:43:c6:d0	(79,35)	lOnder
+"bb-d1-f01-r" 64:d9:89:43:ba:90	(79,28)	lBoven
+"bb-d1-f02-l" 64:d9:89:43:b8:c0	(86,35)	rOnder
+"bb-d1-f02-r" 64:d9:89:43:d1:80	(86,28)	rBoven
+
+Spiegel 4
+"bb-d1-f03-l" 64:d9:89:43:d0:a0	(64,35)  lOnder
+"bb-d1-f03-r" 64:d9:89:43:b5:a0	(64,28)  lBoven
+"bb-d1-f04-l" 64:d9:89:43:b5:60	(71,35)  rOnder
+"bb-d1-f04-r" 64:d9:89:43:c2:50	(71,28)  rBoven
+
+Spiegel 3
+"bb-d1-f10-l" 64:d9:89:43:cd:90	(55.5,28)	rBoven
+"bb-d1-f10-r" 64:d9:89:43:c2:40	(55.5,35)	rOnder
+"bb-d1-f11-l" 64:d9:89:43:b8:b0	(48.5,28)	lBoven
+"bb-d1-f11-r" 64:d9:89:43:c6:20	(48.5,35)	lOnder
