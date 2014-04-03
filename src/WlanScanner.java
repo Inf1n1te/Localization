@@ -15,7 +15,7 @@ public class WlanScanner {
 	public static int port = 2548;
 	
 	//The ip address of the machine the Wlan scanner server is running on. (Default = 127.0.0.1 , your own machine)
-	public static String targetIP =  "127.0.0.1";
+	public static String targetIP =  "130.89.136.71";
 	
 	//Location of the receive script for position on the website
 	public static String webSenderTarget = "http://dacs-stud03.ewi.utwente.nl/challenge7/receiveData.php";
@@ -27,7 +27,7 @@ public class WlanScanner {
 	public static boolean sendToWebsite = false;
 	
 	//The LocationFinder that is to be used. Replace this with your own implementation!
-	public LocationFinder locationHandler = new SimpleLocationFinder();
+	public LocationFinder locationHandler = new StaticLocationFinder();
 	
 	///////////// Do not edit below this line! ////////////////
 	
