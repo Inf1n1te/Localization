@@ -27,7 +27,7 @@ public class WlanScanner {
 	public static boolean sendToWebsite = false;
 	
 	//The LocationFinder that is to be used. Replace this with your own implementation!
-	public LocationFinder locationHandler = new StaticLocationFinder1();
+	public LocationFinder locationHandler = new Test();
 	
 	///////////// Do not edit below this line! ////////////////
 	
@@ -67,7 +67,7 @@ public class WlanScanner {
 				tempPos = locationHandler.locate(data.take());
 				pos.add(tempPos);
 				if(sendToWebsite) sendPos.add(tempPos);
-				System.out.println(tempPos); //When data is available give to the locationFinder
+//				System.out.println(tempPos); //When data is available give to the locationFinder
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

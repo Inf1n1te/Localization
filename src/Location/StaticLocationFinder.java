@@ -26,18 +26,13 @@ public class StaticLocationFinder implements LocationFinder {
 	
 	public Position triangulate(MacRssiPair[] data) {
 		MacRssiPair[] filteredData = filterData(data);
-//		Position[] positions = new Position[filteredData.length];
 		double x = 0;
 		double y = 0;
 
-		
-		
 		for (int i = 0; i < filteredData.length; i++) {
 			if ((bestData.containsKey(filteredData[i].getMacAsLong()) 
 					&& bestData.get(filteredData[i].getMacAsLong()) < filteredData[i].getRssi()) 
 					|| !bestData.containsKey(filteredData[i].getMacAsLong())) {
-				System.out.println("OLD  --  " + bestData.get(filteredData[i].getMacAsLong()) + "\n"
-						+ "NEW  --  " + filteredData[i].getRssi());
 				bestData.put(filteredData[i].getMacAsLong(), filteredData[i].getRssi());
 			}
 		}
@@ -62,28 +57,6 @@ public class StaticLocationFinder implements LocationFinder {
 		if (x > 1 || y > 1) {
 			lastPosition = new Position(x, y);
 		}
-		
-		
-		
-		
-		
-//		double[] factors = new double[filteredData.length];
-//		double sumOfFactors = 0;
-//		
-//		for (int i = 0; i < filteredData.length; i++) {
-//			positions[i] = knownLocations.get(filteredData[i].getMacAsLong());
-//			factors[i] = Math.pow(-filteredData[i].getRssi(), -3);
-//			sumOfFactors += factors[i];
-//		}
-//		
-//		for (int i = 0; i < filteredData.length; i++) {
-//			x += positions[i].getX() * (factors[i] / sumOfFactors);
-//			y += positions[i].getY() * (factors[i] / sumOfFactors);
-//		}
-//		
-//		if (x > 1 || y > 1) {
-//			lastPosition = positionApproximation(new Position(x, y));
-//		}
 		
 		return lastPosition;
 	}
