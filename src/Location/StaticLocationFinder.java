@@ -16,7 +16,7 @@ public class StaticLocationFinder implements LocationFinder {
 		double y = 0;
 		
 		for (int i = 0; i < data.length; i++) {
-			positions[i] = Utils.getKnownLocations().get(data[i].getMac());
+			positions[i] = Utils.getKnownLocations().get(data[i].getMacAsLong());
 			x += positions[i].getX();
 			y += positions[i].getY();
 		}
