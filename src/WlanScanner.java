@@ -21,7 +21,7 @@ public class WlanScanner {
 	public static String webSenderTarget = "http://dacs-stud03.ewi.utwente.nl/challenge7/receiveData.php";
 	
 	//Your group name on the website, don't forget to change this!
-	public static String name = "change me!";
+	public static String name = "TiMartijn";
 	
 	//Controls if the position is send to the server for viewing on the website.
 	public static boolean sendToWebsite = false;
