@@ -27,7 +27,7 @@ public class WlanScanner {
 	public static boolean sendToWebsite = false;
 	
 	//The LocationFinder that is to be used. Replace this with your own implementation!
-	public LocationFinder locationHandler = new StaticLocationFinder();
+	public LocationFinder locationHandler = new StaticLocationFinder1();
 	
 	///////////// Do not edit below this line! ////////////////
 	
