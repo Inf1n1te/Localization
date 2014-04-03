@@ -26,17 +26,16 @@ public class StaticLocationFinder implements LocationFinder {
 		double x = 0;
 		double y = 0;
 		
-		printMacs(filteredData);
-
 		double[] factors = new double[filteredData.length];
 		double sumOfFactors = 0;
 		
 		for (int i = 0; i < filteredData.length; i++) {
 			positions[i] = knownLocations.get(filteredData[i].getMacAsLong());
-//to delete			//x += positions[i].getX() * (Math.max(90 + data[i].getRssi(), 0));
-			//y += positions[i].getY() * (Math.max(90 + data[i].getRssi(), 0));
-			factors[i] = -1 / filteredData[i].getRssi();
+			factors[i] = Math.pow(-filteredData[i].getRssi(), -1);
 			sumOfFactors += factors[i];
+			
+			//x += positions[i].getX() * (Math.max(90 + data[i].getRssi(), 0));
+			//y += positions[i].getY() * (Math.max(90 + data[i].getRssi(), 0));
 		}
 		System.out.println(sumOfFactors);
 		
@@ -50,7 +49,7 @@ public class StaticLocationFinder implements LocationFinder {
 //		x = x / positions.length;
 //		y = y / positions.length;
 		
-		if (!(Double.isNaN(x) || Double.isNaN(y))) {
+		if (x > 1 || y > 1) {
 			lastPosition = new Position(x, y);
 		}
 		return lastPosition;
