@@ -18,14 +18,18 @@ public class StaticLocationFinder implements LocationFinder {
 		Position[] positions = new Position[data.length];
 		double x = 0;
 		double y = 0;
+		int numberOfNodes = 0;
 		
 		for (int i = 0; i < data.length; i++) {
 			positions[i] = knownLocations.get(data[i].getMacAsLong());
-			x += positions[i].getX();
-			y += positions[i].getY();
+			if (data[i].getRssi() > -60 ) {
+				x += positions[i].getX();
+				y += positions[i].getY();
+				numberOfNodes++;
+			}
 		}
-		x = x / positions.length;
-		y = y / positions.length;
+		x = x / numberOfNodes;
+		y = y / numberOfNodes;
 		
 		return new Position(x, y);
 	}
